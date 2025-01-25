@@ -24,6 +24,7 @@ VALUES ('Juan', 'Perez', 22, 85.5),
     ('Ana', 'Martinez', 23, 92.0),
     ('Carlos', 'Lopez', 22, 86.5);
 
+------------------
 -- Encuentra la longitud del nombre del estudiante con el nombre "Luis" y apellido "Rodríguez".
 SELECT LENGTH(e.nombre) FROM estudiantes AS e 
 WHERE e.nombre = 'Luis' AND e.apellido = 'Rodriguez'; 
@@ -96,6 +97,7 @@ WHERE e.nombre = 'Luis' AND e.apellido = 'Rodriguez';
 
 -- Cita el resultado de los dos ejercicios anteriores utilizando la función QUOTE.
 
+---------------
 -- FUNCIONES DE TEXTO PARTE 2
 -- Repite el nombre y apellido del estudiante con el nombre "Juan" y apellido "Pérez" tres veces. 
 
