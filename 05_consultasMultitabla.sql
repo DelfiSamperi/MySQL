@@ -105,27 +105,49 @@ WHERE c.id = v.cliente_id GROUP BY c.nombre;
 -- Calcular el precio promedio de los productos vendidos por cada empleado y mostrar el nombre del empleado junto con el precio promedio 
 -- de los productos que ha vendido.
 
+SELECT e.nombre, e.apellido, AVG(p.precio) as "precio promedio" 
+FROM empleados e, ventas v, productos p
+WHERE e.id = v.empleado_id AND v.producto_id = p.id
+GROUP BY e.nombre, e.apellido;
+
 -- Encontrar el departamento con el salario mínimo más bajo entre los empleados y mostrar el nombre del departamento junto con el salario
 -- mínimo más bajo.
+
+SELECT d.nombre AS "departamento", MIN(e.salario) AS "salario minimo"
+FROM departamentos d, empleados e
+WHERE e.departamento_id = d.id GROUP BY d.id; 
 
 -- Encuentra el departamento con el salario promedio más alto entre los empleados mayores de 30 años y muestra el nombre del departamento 
 -- junto con el salario promedio. Limita los resultados a mostrar solo los departamentos con el salario promedio mayor a 3320.
 
-
+SELECT d.nombre AS "departamento", AVG(e.salario) AS "salario promedio"
+from empleados e, departamentos d
+WHERE e.departamento_id = d.id AND e.edad > 30
+GROUP BY d.nombre HAVING avg(e.salario) > 3320;
 
 ------------------
 
 -- ✏️  EJERCICIOS COMPLEMENTARIOS
--- ✨ Estos ejercicios son de tipo complementario. Esto quiere decir que te ayudará a avanzar en profundidad en el tema visto, pero no son 
--- obligatorios. Te recomendamos intentar con tu equipo trabajar algunos de ellos. 
-
-
 -- Encontrar la cantidad de productos vendidos por cada empleado y mostrar el nombre del empleado junto con la cantidad de productos 
 -- vendidos.
 
+SELECT e.nombre, e.apellido, SUM(v.cantidad) AS "cantidad de productos vendidos"
+FROM ventas v, empleados e
+WHERE e.id = v.empleado_id GROUP BY e.nombre, e.apellido;
+
 -- Calcular el monto total de ventas por cada cliente y mostrar el nombre del cliente junto con el monto total de sus compras.
 
+SELECT c.nombre AS "cliente", SUM(v.monto_total) AS "total compras"
+FROM clientes c, ventas v
+WHERE c.id = v.cliente_id GROUP BY c.nombre;
+
 -- Encontrar el producto más caro vendido y mostrar su nombre y precio.
+
+SELECT p.nombre AS "producto", p.precio AS "precio"
+FROM productos p
+JOIN ventas v ON p.id = v.producto_id
+ORDER BY p.precio DESC
+LIMIT 1;
 
 -- Calcular el salario promedio de los empleados en cada departamento y mostrar el nombre del departamento junto con el salario promedio.
 

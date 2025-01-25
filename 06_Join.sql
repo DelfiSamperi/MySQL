@@ -1,13 +1,31 @@
 -- Ejercicios JOIN Parte 1
 -- Encuentra el nombre y apellido de los empleados junto con la cantidad total de ventas que han realizado.
 
+SELECT e.nombre, e.apellido, SUM(v.cantidad) AS "productos vendidos"
+FROM ventas v INNER JOIN empleados e 
+ON v.empleado_id = e.id
+GROUP BY e.nombre, e.apellido; 
+
 -- Calcula el monto total vendido a cada cliente y muestra el nombre del cliente, su dirección y el monto total.
+
+SELECT c.nombre AS "cliente", c.direccion AS "adress", SUM(v.monto_total) as "total compras"
+FROM ventas v RIGHT JOIN clientes c ON v.cliente_id = c.id
+GROUP BY c.id; 
 
 -- Encuentra los productos vendidos por cada empleado en el departamento de "Ventas" y muestra el nombre del 
 -- empleado junto con el nombre de los productos que han vendido.
 
+SELECT e.nombre, e.apellido, p.nombre AS "productos vendidos"
+FROM empleados e 
+INNER JOIN ventas v ON e.id = v.empleado_id
+INNER JOIN productos p ON v.producto_id = p.id
+INNER JOIN departamentos d ON e.departamento_id = d.id WHERE d.nombre = "ventas";
+
+
 -- Encuentra el nombre del cliente, el nombre del producto y la cantidad comprada de productos con un precio 
 -- superior a $500.
+
+
 
 
 -----------------
