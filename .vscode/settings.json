@@ -13,6 +13,20 @@
             "database": "mi_bd",
             "username": "root",
             "password": "12345"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "vivero",
+            "username": "root",
+            "password": "12345",
+            "name": "localhost"
         }
     ]
 }
