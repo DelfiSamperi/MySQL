@@ -1,6 +1,6 @@
 -- INTEGRADOR OPCIONAL
 -- crear base de datos con este archivo...
-
+-- ejercicio integrador opcional posterior al examen.
 DROP DATABASE IF EXISTS jardineria;
 CREATE DATABASE jardineria CHARACTER SET utf8mb4;
 USE jardineria;
